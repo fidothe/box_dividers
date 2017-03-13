@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'lego/box/dividers/version'
+require 'lego_box_dividers/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "lego-box-dividers"
-  spec.version       = Lego::Box::Dividers::VERSION
+  spec.version       = LegoBoxDividers::VERSION
   spec.authors       = ["Matt Patterson"]
   spec.email         = ["matt@reprocessed.org"]
 
   spec.summary       = %q{Generates PDF outlines for lasercutting dividers for my lego box storage system.}
-  spec.homepage      = "https://github.com/fidothe/lego-box-dividers"
+  spec.homepage      = "https://github.com/fidothe/lego_box_dividers"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|

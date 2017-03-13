@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "lego/box/dividers"
+require "lego_box_dividers"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
