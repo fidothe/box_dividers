@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    lego-box-dividers (0.1.0)
+    box_dividers (0.1.0)
       prawn (~> 2.1)
 
 GEM
@@ -32,8 +32,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  box_dividers!
   bundler (~> 1.14)
-  lego-box-dividers!
   rake (~> 10.0)
   rspec (~> 3.0)
 
