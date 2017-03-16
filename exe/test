@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/box_dividers/top_divider_path'
+require_relative '../lib/box_dividers/pdf'
+
+pdf = BoxDividers::Pdf.new(BoxDividers::TopDividerPath.new(10, 4).path)
+pdf.draw_divider
+pdf.save_as('test.pdf')
