@@ -1,4 +1,5 @@
 require_relative 'path_builder'
+require_relative 'path_cleaner'
 require_relative 'point'
 
 module BoxDividers
@@ -14,25 +15,16 @@ module BoxDividers
       @units_wide, @units_high = units_wide, units_high
     end
 
-    def connect(paths)
-      PathBuilder.build { |p|
-        p << paths[0]
-        paths[1..-1].inject(p.last) { |point, path|
-          p << path.translate(point)
-          p.last
-        }
-      }
-    end
-
     def path
       units = [unit, slot] * units_wide
       units.pop
-      paths = [
-        left_full_height_end,
-        connect(units),
-        right_full_height_end
-      ]
-      connect(paths)
+      PathCleaner.simplify(
+        PathBuilder.connect(
+          left_full_height_end,
+          *units,
+          right_full_height_end
+        )
+      )
     end
 
     def mm_height
@@ -62,12 +54,12 @@ module BoxDividers
         p << Point.new(slot_width, slot_height)
         p << Point.new(slot_width, 0)
       }
-      PathBuilder.build { |p|
-        p << Point.new(0, 0)
-        p << Point.new(slot_tolerance, 0)
-        p << slot_interior.translate(p.last)
-        p << Point.new(slot_tolerance, 0).translate(p.last)
-      }
+      PathBuilder.connect(
+        Point.new(0, 0),
+        Point.new(slot_tolerance, 0),
+        slot_interior,
+        Point.new(slot_tolerance, 0)
+      )
     end
 
     def unit
