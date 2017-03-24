@@ -1,8 +1,19 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/box_dividers/top_divider_path'
+require_relative '../lib/box_dividers/bottom_divider_path'
+require_relative '../lib/box_dividers/bounding_box'
 require_relative '../lib/box_dividers/pdf'
 
-pdf = BoxDividers::Pdf.new(BoxDividers::TopDividerPath.new(10, 4).path)
+top_path = BoxDividers::TopDividerPath.new(10, 4).path
+top_box = BoxDividers::BoundingBox.new(top_path).zero_origin
+pdf = BoxDividers::Pdf.new(top_box)
 pdf.draw_divider
-pdf.save_as('test.pdf')
+pdf.save_as('test-top.pdf')
+
+bottom_path = BoxDividers::BottomDividerPath.new(10, 4).path
+bottom_box = BoxDividers::BoundingBox.new(bottom_path).zero_origin
+p bottom_path
+pdf = BoxDividers::Pdf.new(bottom_box)
+pdf.draw_divider
+pdf.save_as('test-bottom.pdf')
