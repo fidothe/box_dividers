@@ -1,3 +1,4 @@
+require 'box_dividers/boxlike_examples'
 require 'box_dividers/point'
 require 'box_dividers/path'
 
@@ -87,13 +88,7 @@ module BoxDividers
     describe "information about extent" do
       subject { Path.new([Point.new(1,4), Point.new(5,2)]) }
 
-      it "can return a Point representing its min (lower left) x,y value" do
-        expect(subject.lower_left).to eq(Point.new(1,2))
-      end
-
-      it "can return a Point representing its max (upper right) x,y value" do
-        expect(subject.upper_right).to eq(Point.new(5,4))
-      end
+      it_should_behave_like "a basic rectangular box-like thing"
 
       context "an empty path" do
         subject { Path.new }
