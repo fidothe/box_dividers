@@ -2,18 +2,28 @@
 
 require_relative '../lib/box_dividers/top_divider_path'
 require_relative '../lib/box_dividers/bottom_divider_path'
-require_relative '../lib/box_dividers/bounding_box'
-require_relative '../lib/box_dividers/pdf'
+require_relative '../lib/box_dividers/container'
+require_relative '../lib/box_dividers/sheet_builder'
+require_relative '../lib/box_dividers/renderer'
+require_relative '../lib/box_dividers/transformations'
 
-top_path = BoxDividers::TopDividerPath.new(10, 4).path
-top_box = BoxDividers::BoundingBox.new(top_path).zero_origin
-pdf = BoxDividers::Pdf.new(top_box)
-pdf.draw_divider
-pdf.save_as('test-top.pdf')
+top_full = BoxDividers::TopDividerPath.new(10, 2).path.move_to(BoxDividers::Point::ZERO)
+bottom_full = BoxDividers::BottomDividerPath.new(10, 2).path.move_to(BoxDividers::Point::ZERO)
 
-bottom_path = BoxDividers::BottomDividerPath.new(10, 4).path
-bottom_box = BoxDividers::BoundingBox.new(bottom_path).zero_origin
-p bottom_path
-pdf = BoxDividers::Pdf.new(bottom_box)
-pdf.draw_divider
-pdf.save_as('test-bottom.pdf')
+klasses = [BoxDividers::TopDividerPath, BoxDividers::BottomDividerPath]
+
+boxes = [[10,4], [4,4], [3,4]].map { |width, height|
+  klasses.map { |klass|
+    klass.new(width, height).path.move_to(BoxDividers::Point::ZERO)
+  }
+}.flatten.map { |path|
+  BoxDividers::Container.new(path, min_gap: 5)
+}
+
+sheet = BoxDividers::SheetBuilder.build(max_width: 1000, max_height: 600, outer_gap: 5) {
+  boxes.each do |box|
+    add box
+  end
+}.transform(BoxDividers::Transformations.mm_to_pt)
+
+BoxDividers::Renderer.render_to_file(sheet, 'test-nested.pdf')
