@@ -23,12 +23,12 @@ module BoxDividers
     end
 
     def sheet
-      boxes = nested
+      containers = nested
       Sheet.new({
         lower_left: Point::ZERO,
-        boxes: boxes,
-        width: width(boxes),
-        height: height(boxes)
+        containers: containers,
+        width: width(containers),
+        height: height(containers)
       })
     end
 
@@ -46,7 +46,7 @@ module BoxDividers
           full = true
         end
       end
-      boxes
+      boxes.map { |box| box.translate(origin_offset) }
     end
 
     def width(boxes)
@@ -125,6 +125,10 @@ module BoxDividers
 
     def usable_height
       @usable_height ||= max_height - (2 * outer_gap)
+    end
+
+    def origin_offset
+      Point.new(outer_gap, outer_gap)
     end
   end
 end
