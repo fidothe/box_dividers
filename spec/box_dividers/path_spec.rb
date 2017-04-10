@@ -1,5 +1,6 @@
 require 'box_dividers/boxlike_examples'
 require 'box_dividers/point'
+require 'box_dividers/transformations'
 require 'box_dividers/path'
 
 module BoxDividers
@@ -117,7 +118,9 @@ module BoxDividers
       end
 
       specify "transforming a Path generates a new Path by applying the transformation to every Point in the Path" do
-        transformation = Matrix[[2,0,0],[0,2,0],[0,0,1]]
+        transformation = BoxDividers::Transformations::Affine.new(
+          Matrix[[2,0,0],[0,2,0],[0,0,1]]
+        )
         expected = Path.new([Point.new(2,2), Point.new(2,4)])
 
         expect(subject.transform(transformation)).to eq(expected)

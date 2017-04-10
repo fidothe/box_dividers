@@ -2,6 +2,7 @@ require 'box_dividers/container'
 require 'box_dividers/boxlike_examples'
 require 'box_dividers/spec_box'
 require 'box_dividers/point'
+require 'box_dividers/transformations'
 
 module BoxDividers
   RSpec.describe Container do
@@ -16,7 +17,10 @@ module BoxDividers
 
     context "min_gap and transformation" do
       specify "we assume transformations are simply uniform and the min_gap gets scaled as if it were an x co-ord" do
-        transformed = subject.transform(Matrix[[2,0,0],[0,2,0],[0,0,1]])
+        transformation = BoxDividers::Transformations::Affine.new(
+          Matrix[[2,0,0],[0,2,0],[0,0,1]]
+        )
+        transformed = subject.transform(transformation)
         expect(transformed.min_gap).to eq(100)
       end
     end
