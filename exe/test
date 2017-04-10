@@ -12,7 +12,10 @@ bottom_full = BoxDividers::BottomDividerPath.new(10, 2).path.move_to(BoxDividers
 
 klasses = [BoxDividers::TopDividerPath, BoxDividers::BottomDividerPath]
 
-boxes = [[10,4], [4,4], [3,4]].map { |width, height|
+units_high = 1
+
+# boxes = [[10,units_high], [4,units_high], [3,units_high], [2,units_high]].map { |width, height|
+boxes = [[10,units_high], [3,units_high], [2,units_high]].map { |width, height|
   klasses.map { |klass|
     klass.new(width, height).path.move_to(BoxDividers::Point::ZERO)
   }
@@ -26,4 +29,4 @@ sheet = BoxDividers::SheetBuilder.build(max_width: 1000, max_height: 600, outer_
   end
 }.transform(BoxDividers::Transformations.mm_to_pt)
 
-BoxDividers::Renderer.render_to_file(sheet, 'test-nested.pdf')
+BoxDividers::Renderer.render_to_file(sheet, "test-nested-#{units_high}u.pdf")
