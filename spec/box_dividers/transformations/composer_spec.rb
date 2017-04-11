@@ -2,6 +2,7 @@ require 'box_dividers/transformations/composer'
 require 'box_dividers/transformations/affine'
 require 'box_dividers/transformations/proclike'
 require 'box_dividers/point'
+require 'box_dividers/transformations/shared_examples'
 
 module BoxDividers::Transformations
   RSpec.describe Composer do
@@ -16,13 +17,12 @@ module BoxDividers::Transformations
       expect(Composer.new(t2, t1)).to eq(Composer.new(t2, t1))
     end
 
-    context "being #call()ed" do
+    context "behaving like a transform" do
+      let(:input_point) { BoxDividers::Point.new(1,2) }
+      let(:expected_point) { BoxDividers::Point.new(-1,-2) }
       subject { Composer.new(t1, t2) }
 
-      it "returns the Point that results from passing its argument through all its transforms in the correct order" do
-        input = BoxDividers::Point.new(1,2)
-        expected = BoxDividers::Point.new(-1,-2)
-      end
+      include_examples "transformation object fundamentals"
     end
 
     context "optimisations" do

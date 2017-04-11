@@ -11,6 +11,10 @@ module BoxDividers
         raise NotImplementedError, "Classes including Transformations::Common must implement #affine?"
       end
 
+      def to_transform
+        self
+      end
+
       def flattened_transforms
         [self]
       end
