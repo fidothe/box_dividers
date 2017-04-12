@@ -2,6 +2,7 @@ require 'box_dividers/boxlike_examples'
 require 'box_dividers/bounding_box'
 require 'box_dividers/transformations'
 require 'box_dividers/path'
+require 'box_dividers/vector'
 
 module BoxDividers
   RSpec.describe BoundingBox do
@@ -43,7 +44,7 @@ module BoxDividers
       it "can be translated" do
         expected = BoundingBox.new(Path.new([Point.new(0,-1), Point.new(4,3)]))
 
-        translated = subject.translate(Point.new(1,0))
+        translated = subject.translate(Vector.new(1,0))
 
         expect(translated).to eq(expected)
       end

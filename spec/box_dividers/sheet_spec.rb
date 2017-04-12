@@ -2,6 +2,7 @@ require 'box_dividers/sheet'
 require 'box_dividers/boxlike_examples'
 require 'box_dividers/spec_box'
 require 'box_dividers/point'
+require 'box_dividers/vector'
 
 module BoxDividers
   RSpec.describe Sheet do
@@ -16,9 +17,12 @@ module BoxDividers
     end
 
     context "translation" do
+      let(:point) { Point.new(100,100) }
+      let(:translation) { Vector.translation_between(Point::ZERO, point) }
+
       it "correctly translates its boxes" do
-        translated = subject.translate(Point.new(100,100))
-        expect(translated.containers).to eq([box.translate(Point.new(100,100))])
+        translated = subject.translate(translation)
+        expect(translated.containers).to eq([box.translate(translation)])
       end
     end
   end

@@ -1,4 +1,5 @@
 require_relative 'point'
+require_relative 'vector'
 
 module BoxDividers
   module Boxlike
@@ -15,15 +16,15 @@ module BoxDividers
     end
 
     def lower_right
-      @lower_right ||= lower_left.translate(Point.new(width, 0))
+      @lower_right ||= lower_left.translate(BoxDividers::Vector.new(width, 0))
     end
 
     def upper_left
-      @upper_left ||= lower_left.translate(Point.new(0, height))
+      @upper_left ||= lower_left.translate(BoxDividers::Vector.new(0, height))
     end
 
     def upper_right
-      @upper_right ||= lower_left.translate(Point.new(width, height))
+      @upper_right ||= lower_left.translate(BoxDividers::Vector.new(width, height))
     end
 
     def corners
@@ -31,8 +32,8 @@ module BoxDividers
     end
 
     def move_to(point)
-      translation = lower_left.translation_to(point)
-      return self if translation == Point::ZERO
+      translation = BoxDividers::Vector.translation_between(lower_left, point)
+      return self if translation == BoxDividers::Vector::NULL
       translate(translation)
     end
 
