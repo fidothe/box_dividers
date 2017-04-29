@@ -11,6 +11,7 @@ module BoxDividers
     UNIT_HEIGHT = 42
     CHANNEL_WIDTH = 4
     SLOT_WIDTH = 3.6
+    CORNER_RADIUS = 1
 
     def self.included(base)
       base.send(:attr_reader, :units_wide, :units_high)
@@ -55,12 +56,19 @@ module BoxDividers
       mm_height / 2.0
     end
 
+    def corner_radius
+      CORNER_RADIUS
+    end
+
     def slot
+      side = PathBuilder.build { |p|
+        p << Point.new(0, 0)
+        p << Point.new(slot_tolerance, 0)
+      }
       PathBuilder.connect(
-        Point.new(0, 0),
-        Point.new(slot_tolerance, 0),
+        side,
         slot_interior,
-        Point.new(slot_tolerance, 0)
+        side
       )
     end
 
@@ -83,13 +91,27 @@ module BoxDividers
 
     def tab
       tab_bottom_y = -1.5
+      tab_width = 8
       tab_right_x = 8
-      PathBuilder.build { |p|
+      left = PathBuilder.build { |p|
         p << Point.new(0, 0)
-        p << Point.new(0, tab_bottom_y)
-        p << Point.new(tab_right_x, tab_bottom_y)
-        p << Point.new(tab_right_x, 0)
+        p << Point.new(0, tab_bottom_y + corner_radius)
       }
+      centre = PathBuilder.build { |p|
+        p << Point.new(0, 0)
+        p << Point.new(tab_width - (2 * corner_radius), 0)
+      }
+      right = PathBuilder.build { |p|
+        p << Point.new(0, tab_bottom_y + corner_radius)
+        p << Point.new(0, 0)
+      }
+      PathBuilder.connect(
+        left,
+        Arc.degrees(angle: 90, starting_angle: 180, radius: 1).path,
+        centre,
+        Arc.degrees(angle: 90, starting_angle: 270, radius: 1).path,
+        right
+      )
     end
 
     def slot_width_path
