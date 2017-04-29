@@ -28,7 +28,7 @@ module BoxDividers
     def bottom_unit
       PathBuilder.build { |p|
         p << Point.new(0, 0)
-        p << tab.translate(Point.new(15, 0))
+        p << tab.translate(Vector.new(15, 0))
         p << Point.new(UNIT_WIDTH, 0)
       }
     end

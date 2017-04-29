@@ -1,6 +1,8 @@
-require_relative 'path_builder'
-require_relative 'path_cleaner'
-require_relative 'point'
+require_relative './path_builder'
+require_relative './path_cleaner'
+require_relative './point'
+require_relative './vector'
+require_relative './arc'
 
 module BoxDividers
   module DividerPath
@@ -74,7 +76,7 @@ module BoxDividers
     def unit
       PathBuilder.build { |p|
         p << Point.new(0, 0)
-        p << tab.translate(Point.new(15, 0))
+        p << tab.translate(Vector.new(15, 0))
         p << Point.new(UNIT_WIDTH, 0)
       }
     end
