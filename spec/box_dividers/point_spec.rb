@@ -1,4 +1,5 @@
 require 'box_dividers/point'
+require 'box_dividers/cubic_bezier'
 require 'box_dividers/vector'
 
 module BoxDividers
@@ -33,6 +34,11 @@ module BoxDividers
 
         specify "a Point is not equal to another point if their co-ordinates differ" do
           expect(p1 == p3).to be(false)
+        end
+
+        specify "a Point is not equal to a CubicBezier, even if they share the same x,y" do
+          cb = CubicBezier.new(end_point: p1, control_point_1: p3, control_point_2: p1)
+          expect(p1 == cb).to be(false)
         end
 
         specify "a Point approximates another if their co-ordinates are within the specified delta" do
