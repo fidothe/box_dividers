@@ -55,6 +55,10 @@ module BoxDividers
       end
     end
 
+    def points
+      [path.first, self]
+    end
+
     private
 
     def positive_radians
