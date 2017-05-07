@@ -1,4 +1,5 @@
 require 'box_dividers/cubic_bezier'
+require 'box_dividers/pointlike_examples'
 
 module BoxDividers
   RSpec.describe CubicBezier do
@@ -10,6 +11,8 @@ module BoxDividers
     }
 
     subject { CubicBezier.new(curve_opts) }
+
+    it_behaves_like "a point-like thing"
 
     it "has an end point" do
       expect(subject.end_point).to eq(end_point)

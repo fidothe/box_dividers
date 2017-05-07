@@ -1,4 +1,5 @@
 require_relative './vector'
+require_relative './pointlike'
 require 'matrix'
 
 module BoxDividers
@@ -8,14 +9,12 @@ module BoxDividers
       Point.new(x, y)
     end
 
+    include Pointlike
+
     attr_reader :x, :y
 
     def initialize(x, y)
       @x, @y = x, y
-    end
-
-    def points
-      [self]
     end
 
     def point_type
@@ -28,7 +27,8 @@ module BoxDividers
     end
 
     def approximates?(other, delta)
-      ((other.x - x).abs <= delta) &&
+      other.point_type == point_type &&
+        ((other.x - x).abs <= delta) &&
         ((other.y - y).abs <= delta)
     end
 
