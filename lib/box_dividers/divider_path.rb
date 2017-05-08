@@ -2,7 +2,7 @@ require_relative './path_builder'
 require_relative './path_cleaner'
 require_relative './point'
 require_relative './vector'
-require_relative './arc'
+require_relative './arc_builder'
 
 module BoxDividers
   module DividerPath
@@ -107,9 +107,9 @@ module BoxDividers
       }
       PathBuilder.connect(
         left,
-        Arc.degrees(angle: 90, starting_angle: 180, radius: 1).path,
+        ArcBuilder.degrees(angle: 90, starting_angle: 180, radius: 1).path,
         centre,
-        Arc.degrees(angle: 90, starting_angle: 270, radius: 1).path,
+        ArcBuilder.degrees(angle: 90, starting_angle: 270, radius: 1).path,
         right
       )
     end
