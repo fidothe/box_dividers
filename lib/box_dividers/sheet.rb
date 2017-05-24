@@ -31,7 +31,11 @@ module BoxDividers
     end
 
     def paths
-      []
+      containers
+    end
+
+    def box_type
+      [:container]
     end
 
     def ==(other)

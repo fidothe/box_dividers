@@ -49,5 +49,9 @@ module BoxDividers
     def containers
       []
     end
+
+    def box_type
+      [:container]
+    end
   end
 end
