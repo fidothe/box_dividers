@@ -19,17 +19,15 @@ module BoxDividers
     end
 
     def top_unit
-      PathBuilder.build { |p|
-        p << Point.new(0, 0)
-        p << Point.new(-UNIT_WIDTH, 0)
-      }
+      Line.horizontal(-UNIT_WIDTH)
     end
 
     def bottom_unit
+      line = Line.horizontal(UNIT_WIDTH)
       PathBuilder.build { |p|
-        p << Point.new(0, 0)
-        p << tab.translate(Vector.new(15, 0))
-        p << Point.new(UNIT_WIDTH, 0)
+        p << line.points.first
+        p << tab.translate(Vector.translation_between(tab.upper_centre, line.centre))
+        p << line.points.last
       }
     end
 
@@ -39,7 +37,6 @@ module BoxDividers
 
     def interior_left_end
       PathBuilder.build { |p|
-        p << Point.new(end_width, mm_height)
         p << Point.new(end_width, mm_height)
         p << Point.new(end_width, slot_height)
         p << Point.new(0, slot_height)

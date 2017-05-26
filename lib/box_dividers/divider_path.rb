@@ -3,6 +3,8 @@ require_relative './path_cleaner'
 require_relative './point'
 require_relative './vector'
 require_relative './arc_builder'
+require_relative './line'
+require_relative './corner'
 
 module BoxDividers
   module DividerPath
@@ -91,6 +93,7 @@ module BoxDividers
 
     def tab
       tab_bottom_y = -1.5
+      tab_height = 1.5
       tab_width = 8
       tab_right_x = 8
       left = PathBuilder.build { |p|
@@ -112,13 +115,14 @@ module BoxDividers
         ArcBuilder.degrees(angle: 90, starting_angle: 270, radius: 1).path,
         right
       )
+      left = Line.vertical(-tab_height)
+      centre = Line.horizontal(tab_width)
+      right = Line.vertical(tab_height)
+      Corner.join_rounded(radius: 1, paths: [left, centre, right])
     end
 
     def slot_width_path
-      PathBuilder.build { |p|
-        p << Point.new(0, 0)
-        p << Point.new(channel_width, 0)
-      }
+      Line.horizontal(channel_width)
     end
 
     def left_end
