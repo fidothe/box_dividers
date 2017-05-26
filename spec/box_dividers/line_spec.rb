@@ -1,5 +1,6 @@
 require 'box_dividers/path_builder'
 require 'box_dividers/pathlike_examples'
+require 'box_dividers/boxlike_examples'
 require 'box_dividers/line'
 
 module BoxDividers
@@ -273,6 +274,10 @@ module BoxDividers
       let(:end_point) { Point.new(4,4) }
       let(:points) { [Point::ZERO, end_point] }
       subject { Line.build(end_point: end_point) }
+    end
+
+    it_should_behave_like "a basic rectangular box-like thing" do
+      subject { Line.build(end_point: Point.new(4,4)) }
     end
 
     context "building a line from a two-item Path" do
