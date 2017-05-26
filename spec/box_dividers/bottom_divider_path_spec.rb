@@ -1,10 +1,10 @@
-require 'box_dividers/top_divider_path'
+require 'box_dividers/bottom_divider_path'
 
 module BoxDividers
-  RSpec.describe TopDividerPath do
+  RSpec.describe BottomDividerPath do
     let(:units_wide) { 10 }
     let(:units_high) { 2 }
-    subject { TopDividerPath.new(units_wide, units_high) }
+    subject { BottomDividerPath.new(units_wide, units_high) }
 
     it "should run without errors given sensible inputs" do
       expect { subject.path }.not_to raise_error
