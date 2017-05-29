@@ -8,51 +8,89 @@ module BoxDividers
   class BottomDividerPath
     include DividerPath
 
-    def top_units
-      units = [top_unit, slot] * units_wide
-      units[0..-2]
-    end
-
     def bottom_units
-      units = [bottom_unit, slot_width_path] * units_wide
-      units[0..-2]
+      [bottom_path]
     end
 
-    def top_unit
-      Line.horizontal(-UNIT_WIDTH)
-    end
-
-    def bottom_unit
-      line = Line.horizontal(UNIT_WIDTH)
+    def bottom_path
       PathBuilder.build { |p|
-        p << line.points.first
-        p << tab.translate(Vector.translation_between(tab.upper_centre, line.centre))
-        p << line.points.last
+        p << Point::ZERO
+        (1..units_wide).each do |n|
+          p << tab.translate(Vector.new(unit_offset(n), 0))
+        end
+        p << Point.new(mm_width, 0)
       }
+    end
+
+    def top_units
+      [top_path]
+    end
+
+    def top_path
+      PathBuilder.build { |p|
+        p << top_start_point
+        (1...units_wide).each do |n|
+          p << slot.translate(Vector.new(-unit_offset(n), 0))
+        end
+        p << top_end_point
+      }
+    end
+
+    def top_start_point
+      x = full_width? ? 0 : -corner_radius
+      Point.new(x, mm_height)
+    end
+
+    def top_end_point
+      offset = full_width? ? 0 : corner_radius
+      x = (mm_width - offset) * -1
+      Point.new(x, mm_height)
     end
 
     def slot
-      super.transform(Transformations.xy_axis_reflect)
+      @slot ||= begin
+        slot = untranslated_slot.transform(Transformations.xy_axis_reflect)
+        slot_centre_position = abs_slot_centre_position.translate(Vector.new(0,mm_height)).transform(Transformations.y_axis_reflect)
+        slot.translate(Vector.translation_between(slot.upper_centre, slot_centre_position))
+      end
     end
 
     def interior_left_end
-      PathBuilder.build { |p|
-        p << Point.new(end_width, mm_height)
-        p << Point.new(end_width, slot_height)
-        p << Point.new(0, slot_height)
-        p << Point.new(0, 0)
-        p << Point.new(end_width, 0)
-      }
+      top = Corner.join_rounded({
+        radius: corner_radius,
+        paths: [
+          Line.horizontal(-corner_radius),
+          Line.vertical(-slot_height)
+        ]
+      })
+      bottom = Corner.join_rounded({
+        radius: corner_radius,
+        paths: [
+          Line.horizontal(-end_width),
+          Line.vertical(-slot_height),
+          Line.horizontal(end_width)
+        ]
+      })
+      PathBuilder.connect(top, bottom)
     end
 
     def interior_right_end
-      PathBuilder.build { |p|
-        p << Point.new(0, 0)
-        p << Point.new(end_width, 0)
-        p << Point.new(end_width, slot_height)
-        p << Point.new(0, slot_height)
-        p << Point.new(0, mm_height)
-      }
+      bottom = Corner.join_rounded({
+        radius: corner_radius,
+        paths: [
+          Line.horizontal(end_width),
+          Line.vertical(slot_height),
+          Line.horizontal(-end_width)
+        ]
+      })
+      top = Corner.join_rounded({
+        radius: corner_radius,
+        paths: [
+          Line.vertical(slot_height),
+          Line.horizontal(-corner_radius)
+        ]
+      })
+      PathBuilder.connect(bottom, top)
     end
   end
 end
