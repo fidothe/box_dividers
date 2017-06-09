@@ -3,6 +3,8 @@ require_relative 'vector'
 
 module BoxDividers
   module Boxlike
+    POSITION_METHODS = [:lower_left, :lower_centre, :lower_right, :centre_right, :upper_right, :upper_centre, :upper_left, :centre_left, :centre]
+
     def lower_left
       raise NotImplementedError, "includers of Boxlike must implement #lower_left"
     end
@@ -55,8 +57,14 @@ module BoxDividers
       [lower_left, lower_right, upper_right, upper_left]
     end
 
-    def move_to(point)
-      translation = BoxDividers::Vector.translation_between(lower_left, point)
+    def move_to(point, opts = {})
+      reference_position_method = opts.fetch(:position, :lower_left)
+      if invalid_position_method?(reference_position_method)
+        raise ArgumentError, ":position option must be a valid position (one of #{POSITION_METHODS.map(&:inspect).join(', ')}), rather than #{opts[:position].inspect}" 
+      end
+
+      reference_point = send(reference_position_method)
+      translation = BoxDividers::Vector.translation_between(reference_point, point)
       return self if translation == BoxDividers::Vector::NULL
       translate(translation)
     end
@@ -121,6 +129,14 @@ module BoxDividers
 
       other_bottom == top || other_top == bottom ||
         other_top < bottom || other_bottom > top
+    end
+
+    def invalid_position_method?(method_name)
+      !valid_position_method?(method_name)
+    end
+
+    def valid_position_method?(method_name)
+      POSITION_METHODS.include?(method_name)
     end
   end
 end
