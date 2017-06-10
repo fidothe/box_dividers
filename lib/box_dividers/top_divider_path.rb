@@ -39,15 +39,14 @@ module BoxDividers
 
     def slot
       @slot ||= begin
-        untranslated_slot.translate(Vector.translation_between(untranslated_slot.lower_centre, abs_slot_centre_position))
+        untranslated_slot.move_to(abs_slot_centre_position, position: :lower_centre)
       end
     end
 
     def bottom_unit
       PathBuilder.build { |p|
         p << Point.new(0, 0)
-        p << tab.translate(Vector.translation_between(tab.upper_centre, line.centre))
-        p << tab.translate(Vector.new(15, 0))
+        p << tab.move_to(line.centre, position: :upper_centre)
         p << Point.new(UNIT_WIDTH, 0)
       }
     end

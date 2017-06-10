@@ -107,7 +107,7 @@ module BoxDividers
         centre = Line.horizontal(tab_width)
         right = Line.vertical(tab_height)
         tab = Corner.join_rounded(radius: corner_radius, paths: [left, centre, right])
-        tab.translate(Vector.translation_between(tab.upper_centre, unit_line.centre))
+        tab.move_to(unit_line.centre, position: :upper_centre)
       end
     end
 

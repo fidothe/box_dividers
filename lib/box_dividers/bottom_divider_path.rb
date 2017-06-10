@@ -49,9 +49,8 @@ module BoxDividers
 
     def slot
       @slot ||= begin
-        slot = untranslated_slot.transform(Transformations.xy_axis_reflect)
         slot_centre_position = abs_slot_centre_position.translate(Vector.new(0,mm_height)).transform(Transformations.y_axis_reflect)
-        slot.translate(Vector.translation_between(slot.upper_centre, slot_centre_position))
+        untranslated_slot.transform(Transformations.xy_axis_reflect).move_to(slot_centre_position, position: :upper_centre)
       end
     end
 
