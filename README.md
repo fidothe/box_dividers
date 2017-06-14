@@ -29,12 +29,15 @@ Or install it yourself as:
 ## Usage
 
 Set sheet maximum size to 1000mm x 600mm and write to `output-file.pdf`
+
     $ box-dividers -w 1000 -h 600 output-file.pdf
 
 Set sheet maximum size to 1000mm x 600mm and write to `output-file.pdf`
+
     $ box-dividers -w 1000 -h 600 output-file.pdf
 
 Set sheet maximum size to 1000mm x 600mm, generate 10x4, 5x4, & 4x4 dividers, and write to `output-file.pdf`
+
     $ box-dividers -w 1000 -h 600 -s "10,4 5,4 4,4" output-file.pdf
 
 You can also run `box-dividers --help` for a quick summary
