@@ -1,5 +1,8 @@
-require "bundler/setup"
-require "box_dividers"
+require 'bundler/setup'
+require 'simplecov'
+SimpleCov.start
+
+require 'box_dividers'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
