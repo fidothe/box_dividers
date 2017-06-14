@@ -10,16 +10,16 @@ module BoxDividers
           args = Shellwords.split('--width 200 --height 100')
           cli = CLI.new(args)
 
-          expect(cli.opts[:width]).to eq(200)
-          expect(cli.opts[:height]).to eq(100)
+          expect(cli.opts.width).to eq(200)
+          expect(cli.opts.height).to eq(100)
         end
 
         specify "can be specified via -w and -h" do
           args = Shellwords.split('-w 200 -h 100')
           cli = CLI.new(args)
 
-          expect(cli.opts[:width]).to eq(200)
-          expect(cli.opts[:height]).to eq(100)
+          expect(cli.opts.width).to eq(200)
+          expect(cli.opts.height).to eq(100)
         end
 
         specify "if not provided then raise an error" do
@@ -32,21 +32,21 @@ module BoxDividers
           args = Shellwords.split('-w 200 -h 100')
           cli = CLI.new(args)
 
-          expect(cli.opts[:divider_sizes]).to eq([[10,2], [5,2], [4,2], [3,2], [2,2]])
+          expect(cli.opts.divider_sizes).to eq([[10,2], [5,2], [4,2], [3,2], [2,2]])
         end
 
         specify "uses a 'w,h w,h' comma- and space-separated format" do
           args = Shellwords.split('-w 200 -h 100 --divider-sizes "10,4 5,4"')
           cli = CLI.new(args)
 
-          expect(cli.opts[:divider_sizes]).to eq([[10,4], [5,4]])
+          expect(cli.opts.divider_sizes).to eq([[10,4], [5,4]])
         end
 
         specify "can be specified via -s" do
           args = Shellwords.split('-w 200 -h 100 -s "10,4 5,4"')
           cli = CLI.new(args)
 
-          expect(cli.opts[:divider_sizes]).to eq([[10,4], [5,4]])
+          expect(cli.opts.divider_sizes).to eq([[10,4], [5,4]])
         end
       end
 
@@ -55,21 +55,21 @@ module BoxDividers
           args = Shellwords.split('-w 200 -h 100')
           cli = CLI.new(args)
 
-          expect(cli.opts[:sheet_edge_gap]).to eq(5)
+          expect(cli.opts.sheet_edge_gap).to eq(5)
         end
 
         specify "can be specified by --sheet-edge-gap" do
           args = Shellwords.split('-w 200 -h 100 --sheet-edge-gap 10')
           cli = CLI.new(args)
 
-          expect(cli.opts[:sheet_edge_gap]).to eq(10)
+          expect(cli.opts.sheet_edge_gap).to eq(10)
         end
 
         specify "can be specified by -e" do
           args = Shellwords.split('-w 200 -h 100 -e 10')
           cli = CLI.new(args)
 
-          expect(cli.opts[:sheet_edge_gap]).to eq(10)
+          expect(cli.opts.sheet_edge_gap).to eq(10)
         end
       end
 
@@ -78,21 +78,21 @@ module BoxDividers
           args = Shellwords.split('-w 200 -h 100')
           cli = CLI.new(args)
 
-          expect(cli.opts[:divider_gap]).to eq(5)
+          expect(cli.opts.divider_gap).to eq(5)
         end
 
         specify "can be specified by --divider-gap" do
           args = Shellwords.split('-w 200 -h 100 --divider-gap 10')
           cli = CLI.new(args)
 
-          expect(cli.opts[:divider_gap]).to eq(10)
+          expect(cli.opts.divider_gap).to eq(10)
         end
 
         specify "can be specified by -g" do
           args = Shellwords.split('-w 200 -h 100 -g 10')
           cli = CLI.new(args)
 
-          expect(cli.opts[:divider_gap]).to eq(10)
+          expect(cli.opts.divider_gap).to eq(10)
         end
       end
 
@@ -101,14 +101,14 @@ module BoxDividers
           args = Shellwords.split('-w 200 -h 100')
           cli = CLI.new(args)
 
-          expect(cli.opts[:filename]).to eq('box-dividers.pdf')
+          expect(cli.opts.filename).to eq('box-dividers.pdf')
         end
 
         specify "is set from the argument" do
           args = Shellwords.split('-w 200 -h 100 my-great-dividers.pdf')
           cli = CLI.new(args)
 
-          expect(cli.opts[:filename]).to eq('my-great-dividers.pdf')
+          expect(cli.opts.filename).to eq('my-great-dividers.pdf')
         end
       end
     end
