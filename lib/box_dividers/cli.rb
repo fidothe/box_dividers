@@ -4,6 +4,17 @@ require_relative './renderer'
 
 module BoxDividers
   class CLI
+    EXAMPLES = <<-EOS
+EXAMPLES
+Set sheet maximum size to 1000mm x 600mm and write to `output-file.pdf`
+%<program_name>s -w 1000 -h 600 output-file.pdf
+
+%<program_name>s --width 1000 --height 600 output-file.pdf
+Set sheet maximum size to 1000mm x 600mm and write to `output-file.pdf`
+
+%<program_name>s -w 1000 -h 600 -s "10,4 5,4 4,4" output-file.pdf
+Set sheet maximum size to 1000mm x 600mm, generate 10x4, 5x4, & 4x4 dividers, and write to `output-file.pdf`
+EOS
     def self.run!
       new(ARGV).run
     end
@@ -18,7 +29,8 @@ module BoxDividers
     def run
       begin
         Renderer.render_to_file(sheet, output_path)
-      rescue CLIHelpShown
+      rescue ShowCLIHelp
+        puts option_parser
         exit 0
       rescue InvalidCLIOptions
         puts "Sorry, you passed options I don't understand. Here's a quick summary of what I understand:"
@@ -68,7 +80,7 @@ module BoxDividers
             raw_opts[:height] = h
           end
 
-          parser.on("-s", "--divider-sizes SIZES", "Which divider sizes to generate", "Space-separated UNITS_WIDE,UNITS_HIGH list", 'e.g. -s "10,4 10,2"') do |sizes|
+          parser.on("-s", "--divider-sizes SIZES", "Which divider sizes to generate", "Space-separated UNITS_WIDE,UNITS_HIGH list", 'e.g. -s "10,4 10,2"', "Defaults to \"#{Options::DEFAULTS[:divider_sizes].map { |size| size.map(&:to_s).join(',') }.join(' ')}\"") do |sizes|
             raw_opts[:divider_sizes] = sizes.split(' ').map { |size| size.strip.split(',').map { |num| Integer(num, 10) } }
           end
 
@@ -81,13 +93,12 @@ module BoxDividers
           end
 
           parser.on("--help", "Prints this help") do
-            puts parser
-            raise CLIHelpShown
+            raw_opts[:show_help] = true
           end
 
           parser.on("--version", "Print the version") do
             puts "#{parser.program_name} #{BoxDividers::VERSION}"
-            raise CLIHelpShown
+            exit
           end
         }
       end
@@ -103,7 +114,7 @@ module BoxDividers
       end
 
       def to_s
-        parser.to_s
+        "#{parser}\n\n#{EXAMPLES % {program_name: parser.program_name}}"
       end
 
       private
@@ -124,6 +135,7 @@ module BoxDividers
 
       def self.validated(attrs)
         opts = new(attrs)
+        raise ShowCLIHelp if opts.show_help?
         raise InvalidCLIOptions if opts.invalid?
         opts
       end
@@ -134,6 +146,7 @@ module BoxDividers
         DEFAULTS.merge(attrs).each do |attr, value|
           instance_variable_set(:"@#{attr}", value) if ATTRS.include?(attr)
         end
+        @show_help = attrs.fetch(:show_help, false)
       end
 
       def invalid?
@@ -144,6 +157,10 @@ module BoxDividers
         width && height
       end
 
+      def show_help?
+        @show_help
+      end
+
       def to_h
         Hash[ATTRS.map { |method_name| [method_name, send(method_name)] }]
       end
@@ -152,7 +169,7 @@ module BoxDividers
     class InvalidCLIOptions < StandardError
     end
 
-    class CLIHelpShown < StandardError
+    class ShowCLIHelp < StandardError
     end
   end
 end
