@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/box_dividers/cli'
+
+BoxDividers::CLI.run!
