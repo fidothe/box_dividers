@@ -1,15 +1,21 @@
-# Lego::Box::Dividers
+# BoxDividers
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/lego/box/dividers`. To experiment with that code, run `bin/console` for an interactive prompt.
+Generates PDFs of the dividers for my Lego storage box system.
 
-TODO: Delete this and the text above, and describe your gem
+You can use it as a library or with the supplied `box-dividers` command
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Run
+
+    $ gem install box_dividers
+
+to just install it so you run the `box-dividers` command
+
+To use it as a library add this line to your application's Gemfile:
 
 ```ruby
-gem 'lego-box-dividers'
+gem 'box_dividers'
 ```
 
 And then execute:
@@ -18,11 +24,20 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install lego-box-dividers
+    $ gem install box_dividers
 
 ## Usage
 
-TODO: Write usage instructions here
+Set sheet maximum size to 1000mm x 600mm and write to `output-file.pdf`
+    $ box-dividers -w 1000 -h 600 output-file.pdf
+
+Set sheet maximum size to 1000mm x 600mm and write to `output-file.pdf`
+    $ box-dividers -w 1000 -h 600 output-file.pdf
+
+Set sheet maximum size to 1000mm x 600mm, generate 10x4, 5x4, & 4x4 dividers, and write to `output-file.pdf`
+    $ box-dividers -w 1000 -h 600 -s "10,4 5,4 4,4" output-file.pdf
+
+You can also run `box-dividers --help` for a quick summary
 
 ## Development
 
@@ -32,7 +47,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/lego-box-dividers. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/fidothe/box_dividers. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License

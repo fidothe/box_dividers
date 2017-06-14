@@ -6,8 +6,8 @@ module BoxDividers
   class CLI
     EXAMPLES = <<-EOS
 EXAMPLES
-Set sheet maximum size to 1000mm x 600mm and write to `output-file.pdf`
 %<program_name>s -w 1000 -h 600 output-file.pdf
+Set sheet maximum size to 1000mm x 600mm and write to `output-file.pdf`
 
 %<program_name>s --width 1000 --height 600 output-file.pdf
 Set sheet maximum size to 1000mm x 600mm and write to `output-file.pdf`
