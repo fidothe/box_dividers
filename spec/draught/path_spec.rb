@@ -1,9 +1,9 @@
-require 'box_dividers/pathlike_examples'
-require 'box_dividers/boxlike_examples'
-require 'box_dividers/point'
-require 'box_dividers/vector'
-require 'box_dividers/transformations'
-require 'box_dividers/path'
+require 'draught/pathlike_examples'
+require 'draught/boxlike_examples'
+require 'draught/point'
+require 'draught/vector'
+require 'draught/transformations'
+require 'draught/path'
 
 module BoxDividers
   RSpec.describe Path do

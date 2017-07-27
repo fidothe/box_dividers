@@ -1,10 +1,10 @@
-require_relative './path_builder'
-require_relative './path_cleaner'
-require_relative './point'
-require_relative './vector'
-require_relative './arc_builder'
-require_relative './line'
-require_relative './corner'
+require_relative '../draught/path_builder'
+require_relative '../draught/path_cleaner'
+require_relative '../draught/point'
+require_relative '../draught/vector'
+require_relative '../draught/arc_builder'
+require_relative '../draught/line'
+require_relative '../draught/corner'
 
 module BoxDividers
   module DividerPath

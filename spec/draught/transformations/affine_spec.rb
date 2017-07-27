@@ -1,7 +1,7 @@
-require 'box_dividers/transformations/affine'
-require 'box_dividers/transformations/proclike'
-require 'box_dividers/transformations/shared_examples'
-require 'box_dividers/point'
+require 'draught/transformations/affine'
+require 'draught/transformations/proclike'
+require 'draught/transformations/shared_examples'
+require 'draught/point'
 
 module BoxDividers::Transformations
   RSpec.describe Affine do

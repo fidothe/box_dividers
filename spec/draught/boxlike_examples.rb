@@ -1,5 +1,5 @@
-require 'box_dividers/point'
-require 'box_dividers/transformations/affine'
+require 'draught/point'
+require 'draught/transformations/affine'
 
 RSpec.shared_examples "a basic rectangular box-like thing" do
   context "the box's dimensions" do

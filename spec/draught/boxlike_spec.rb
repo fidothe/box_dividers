@@ -1,6 +1,6 @@
-require 'box_dividers/boxlike_examples'
-require 'box_dividers/boxlike'
-require 'box_dividers/spec_box'
+require 'draught/boxlike_examples'
+require 'draught/boxlike'
+require 'draught/spec_box'
 
 module BoxDividers
   RSpec.describe Boxlike do

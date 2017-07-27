@@ -1,5 +1,5 @@
-require 'box_dividers/point'
-require 'box_dividers/boxlike'
+require 'draught/point'
+require 'draught/boxlike'
 
 module BoxDividers
   class SpecBox

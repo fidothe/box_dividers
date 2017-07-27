@@ -1,8 +1,8 @@
-require 'box_dividers/container'
-require 'box_dividers/boxlike_examples'
-require 'box_dividers/spec_box'
-require 'box_dividers/point'
-require 'box_dividers/transformations'
+require 'draught/container'
+require 'draught/boxlike_examples'
+require 'draught/spec_box'
+require 'draught/point'
+require 'draught/transformations'
 
 module BoxDividers
   RSpec.describe Container do

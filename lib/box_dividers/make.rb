@@ -1,8 +1,8 @@
 require_relative './bottom_divider_path'
 require_relative './top_divider_path'
-require_relative './container'
-require_relative './sheet_builder'
-require_relative './transformations'
+require_relative '../draught/container'
+require_relative '../draught/sheet_builder'
+require_relative '../draught/transformations'
 
 module BoxDividers
   class Make

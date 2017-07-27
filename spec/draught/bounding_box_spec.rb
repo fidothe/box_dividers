@@ -1,8 +1,8 @@
-require 'box_dividers/boxlike_examples'
-require 'box_dividers/bounding_box'
-require 'box_dividers/transformations'
-require 'box_dividers/path'
-require 'box_dividers/vector'
+require 'draught/boxlike_examples'
+require 'draught/bounding_box'
+require 'draught/transformations'
+require 'draught/path'
+require 'draught/vector'
 
 module BoxDividers
   RSpec.describe BoundingBox do

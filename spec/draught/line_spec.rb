@@ -1,7 +1,7 @@
-require 'box_dividers/path_builder'
-require 'box_dividers/pathlike_examples'
-require 'box_dividers/boxlike_examples'
-require 'box_dividers/line'
+require 'draught/path_builder'
+require 'draught/pathlike_examples'
+require 'draught/boxlike_examples'
+require 'draught/line'
 
 module BoxDividers
   RSpec.describe Line do

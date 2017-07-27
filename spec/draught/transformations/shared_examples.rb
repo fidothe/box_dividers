@@ -1,4 +1,4 @@
-require 'box_dividers/transformations/composer'
+require 'draught/transformations/composer'
 
 RSpec.shared_examples "transformation object fundamentals" do
   context "transformation object fundamentals" do

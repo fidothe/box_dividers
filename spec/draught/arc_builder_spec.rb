@@ -1,4 +1,4 @@
-require 'box_dividers/arc_builder'
+require 'draught/arc_builder'
 
 module BoxDividers
   RSpec.describe ArcBuilder do

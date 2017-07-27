@@ -1,7 +1,7 @@
-require 'box_dividers/corner'
-require 'box_dividers/arc_builder'
-require 'box_dividers/line'
-require 'box_dividers/path_builder'
+require 'draught/corner'
+require 'draught/arc_builder'
+require 'draught/line'
+require 'draught/path_builder'
 
 module BoxDividers
   RSpec.describe Corner do

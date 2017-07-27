@@ -1,5 +1,5 @@
-require 'box_dividers/transformations'
-require 'box_dividers/point'
+require 'draught/transformations'
+require 'draught/point'
 
 module BoxDividers
   RSpec.describe Transformations do

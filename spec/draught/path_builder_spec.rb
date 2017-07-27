@@ -1,5 +1,5 @@
-require 'box_dividers/point'
-require 'box_dividers/path_builder'
+require 'draught/point'
+require 'draught/path_builder'
 
 module BoxDividers
   RSpec.describe PathBuilder do

@@ -1,7 +1,7 @@
-require 'box_dividers/point'
-require 'box_dividers/pointlike_examples'
-require 'box_dividers/cubic_bezier'
-require 'box_dividers/vector'
+require 'draught/point'
+require 'draught/pointlike_examples'
+require 'draught/cubic_bezier'
+require 'draught/vector'
 
 module BoxDividers
   RSpec.describe Point do

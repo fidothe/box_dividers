@@ -1,6 +1,6 @@
-require 'box_dividers/vector'
-require 'box_dividers/point'
-require 'box_dividers/transformations/shared_examples'
+require 'draught/vector'
+require 'draught/point'
+require 'draught/transformations/shared_examples'
 
 module BoxDividers
   RSpec.describe Vector do

@@ -1,7 +1,7 @@
-require 'box_dividers/curve'
-require 'box_dividers/point'
-require 'box_dividers/cubic_bezier'
-require 'box_dividers/pointlike_examples'
+require 'draught/curve'
+require 'draught/point'
+require 'draught/cubic_bezier'
+require 'draught/pointlike_examples'
 
 module BoxDividers
   RSpec.describe Curve do

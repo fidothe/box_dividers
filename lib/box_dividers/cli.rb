@@ -1,6 +1,6 @@
 require 'optparse'
 require_relative './make'
-require_relative './renderer'
+require_relative '../draught/renderer'
 
 module BoxDividers
   class CLI

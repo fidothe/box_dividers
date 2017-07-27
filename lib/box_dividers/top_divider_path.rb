@@ -1,6 +1,6 @@
-require_relative 'path_builder'
-require_relative 'path_cleaner'
-require_relative 'divider_path'
+require_relative '../draught/path_builder'
+require_relative '../draught/path_cleaner'
+require_relative './divider_path'
 
 module BoxDividers
   class TopDividerPath

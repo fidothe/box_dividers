@@ -1,8 +1,8 @@
-require 'box_dividers/sheet'
-require 'box_dividers/boxlike_examples'
-require 'box_dividers/spec_box'
-require 'box_dividers/point'
-require 'box_dividers/vector'
+require 'draught/sheet'
+require 'draught/boxlike_examples'
+require 'draught/spec_box'
+require 'draught/point'
+require 'draught/vector'
 
 module BoxDividers
   RSpec.describe Sheet do

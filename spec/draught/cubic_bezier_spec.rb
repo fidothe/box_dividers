@@ -1,5 +1,5 @@
-require 'box_dividers/cubic_bezier'
-require 'box_dividers/pointlike_examples'
+require 'draught/cubic_bezier'
+require 'draught/pointlike_examples'
 
 module BoxDividers
   RSpec.describe CubicBezier do

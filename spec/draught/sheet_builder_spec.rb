@@ -1,5 +1,5 @@
-require 'box_dividers/sheet_builder'
-require 'box_dividers/spec_box'
+require 'draught/sheet_builder'
+require 'draught/spec_box'
 require 'prawn'
 
 module BoxDividers

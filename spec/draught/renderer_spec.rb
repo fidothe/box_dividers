@@ -1,8 +1,8 @@
-require 'box_dividers/renderer'
-require 'box_dividers/point'
-require 'box_dividers/path_builder'
-require 'box_dividers/container'
-require 'box_dividers/sheet_builder'
+require 'draught/renderer'
+require 'draught/point'
+require 'draught/path_builder'
+require 'draught/container'
+require 'draught/sheet_builder'
 require 'tmpdir'
 
 module BoxDividers

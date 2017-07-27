@@ -1,8 +1,8 @@
-require_relative 'path_builder'
-require_relative 'path_cleaner'
-require_relative 'point'
-require_relative 'divider_path'
-require_relative 'transformations'
+require_relative '../draught/path_builder'
+require_relative '../draught/path_cleaner'
+require_relative '../draught/point'
+require_relative '../draught/transformations'
+require_relative './divider_path'
 
 module BoxDividers
   class BottomDividerPath

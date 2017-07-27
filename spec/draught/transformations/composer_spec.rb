@@ -1,7 +1,7 @@
-require 'box_dividers/transformations/composer'
-require 'box_dividers/transformations/affine'
-require 'box_dividers/transformations/proclike'
-require 'box_dividers/point'
+require 'draught/transformations/composer'
+require 'draught/transformations/affine'
+require 'draught/transformations/proclike'
+require 'draught/point'
 
 module BoxDividers::Transformations
   RSpec.describe Composer do

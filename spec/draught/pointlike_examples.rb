@@ -1,6 +1,6 @@
-require 'box_dividers/transformations'
-require 'box_dividers/vector'
-require 'box_dividers/point'
+require 'draught/transformations'
+require 'draught/vector'
+require 'draught/point'
 
 RSpec.shared_examples "a point-like thing" do
   it "has a numeric x value" do

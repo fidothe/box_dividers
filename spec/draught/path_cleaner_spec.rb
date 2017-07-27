@@ -1,5 +1,5 @@
-require 'box_dividers/path_cleaner'
-require 'box_dividers/point'
+require 'draught/path_cleaner'
+require 'draught/point'
 
 module BoxDividers
   RSpec.describe PathCleaner do
