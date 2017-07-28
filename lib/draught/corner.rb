@@ -3,7 +3,7 @@ require_relative './vector'
 require_relative './line'
 require_relative './arc_builder'
 
-module BoxDividers
+module Draught
   class Corner
     def self.join_rounded(args)
       new(args).join

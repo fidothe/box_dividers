@@ -1,6 +1,6 @@
 require 'draught/arc_builder'
 
-module BoxDividers
+module Draught
   RSpec.describe ArcBuilder do
     def deg_to_rad(degrees)
       degrees * (Math::PI / 180)

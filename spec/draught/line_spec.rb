@@ -3,7 +3,7 @@ require 'draught/pathlike_examples'
 require 'draught/boxlike_examples'
 require 'draught/line'
 
-module BoxDividers
+module Draught
   RSpec.describe Line do
     def deg_to_rad(degrees)
       degrees * (Math::PI / 180)

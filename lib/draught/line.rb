@@ -4,7 +4,7 @@ require_relative './boxlike'
 require_relative './point'
 require_relative './transformations'
 
-module BoxDividers
+module Draught
   class Line
     DEGREES_90 = Math::PI / 2
     DEGREES_180 = Math::PI

@@ -1,4 +1,4 @@
-module BoxDividers
+module Draught
   module Pointlike
     def x
       raise NotImplementedError, "including classes must return an x value"

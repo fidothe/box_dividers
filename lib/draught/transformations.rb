@@ -4,7 +4,7 @@ require_relative 'transformations/affine'
 require_relative 'transformations/proclike'
 require_relative 'transformations/composer'
 
-module BoxDividers
+module Draught
   module Transformations
     extend self
 

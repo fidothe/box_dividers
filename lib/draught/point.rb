@@ -2,7 +2,7 @@ require_relative './vector'
 require_relative './pointlike'
 require 'matrix'
 
-module BoxDividers
+module Draught
   class Point
     def self.from_matrix(matrix)
       x, y = matrix.to_a.flatten

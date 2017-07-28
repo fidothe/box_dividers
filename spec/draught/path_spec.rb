@@ -5,7 +5,7 @@ require 'draught/vector'
 require 'draught/transformations'
 require 'draught/path'
 
-module BoxDividers
+module Draught
   RSpec.describe Path do
     let(:point) { Point.new(1,1) }
     let(:other_point) { Point.new(2,2) }

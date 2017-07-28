@@ -2,7 +2,7 @@ require 'matrix'
 require_relative './transformations/affine'
 require_relative './point'
 
-module BoxDividers
+module Draught
   class Vector
     def self.from_xy(x, y)
       new(x, y)

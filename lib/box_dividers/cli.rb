@@ -28,7 +28,7 @@ EOS
 
     def run
       begin
-        Renderer.render_to_file(sheet, output_path)
+        Draught::Renderer.render_to_file(sheet, output_path)
       rescue ShowCLIHelp
         puts option_parser
         exit 0

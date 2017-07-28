@@ -33,29 +33,29 @@ RSpec.shared_examples "a pathlike thing" do
 
   describe "comparison" do
     it "compares equal to a (0,0) translation of itself" do
-      expect(subject.translate(BoxDividers::Vector::NULL)).to eq(subject)
+      expect(subject.translate(Draught::Vector::NULL)).to eq(subject)
     end
 
     it "does not compare equal to a (1,1) translation of itself" do
-      expect(subject.translate(BoxDividers::Vector.new(1,1))).not_to eq(subject)
+      expect(subject.translate(Draught::Vector.new(1,1))).not_to eq(subject)
     end
 
     it "compares approximately equal to a slightly nudged translation of itself" do
-      approx_pathlike = subject.translate(BoxDividers::Vector.new(0.000001, 0.000001))
+      approx_pathlike = subject.translate(Draught::Vector.new(0.000001, 0.000001))
       expect(subject.approximates?(approx_pathlike, 0.00001)).to be(true)
     end
   end
 
   describe "translation and transformation" do
     specify "translating a Path using a Point produces a new Path with appropriately translated Points" do
-      translation = BoxDividers::Vector.new(2,1)
+      translation = Draught::Vector.new(2,1)
       expected = points.map { |p| p.translate(translation) }
 
       expect(subject.translate(translation).points).to eq(expected)
     end
 
     specify "transforming a Path generates a new Path by applying the transformation to every Point in the Path" do
-      transformation = BoxDividers::Transformations::Affine.new(
+      transformation = Draught::Transformations::Affine.new(
         Matrix[[2,0,0],[0,2,0],[0,0,1]]
       )
       expected = points.map { |p| p.transform(transformation) }

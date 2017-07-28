@@ -1,7 +1,7 @@
 require_relative 'point'
 require_relative 'vector'
 
-module BoxDividers
+module Draught
   module Boxlike
     POSITION_METHODS = [:lower_left, :lower_centre, :lower_right, :centre_right, :upper_right, :upper_centre, :upper_left, :centre_left, :centre]
 
@@ -22,35 +22,35 @@ module BoxDividers
     end
 
     def lower_right
-      @lower_right ||= lower_left.translate(BoxDividers::Vector.new(width, 0))
+      @lower_right ||= lower_left.translate(Draught::Vector.new(width, 0))
     end
 
     def upper_right
-      @upper_right ||= lower_left.translate(BoxDividers::Vector.new(width, height))
+      @upper_right ||= lower_left.translate(Draught::Vector.new(width, height))
     end
 
     def upper_left
-      @upper_left ||= lower_left.translate(BoxDividers::Vector.new(0, height))
+      @upper_left ||= lower_left.translate(Draught::Vector.new(0, height))
     end
 
     def centre_left
-      @centre_left ||= lower_left.translate(BoxDividers::Vector.new(0, height/2.0))
+      @centre_left ||= lower_left.translate(Draught::Vector.new(0, height/2.0))
     end
 
     def lower_centre
-      @lower_centre ||= lower_left.translate(BoxDividers::Vector.new(width/2.0, 0))
+      @lower_centre ||= lower_left.translate(Draught::Vector.new(width/2.0, 0))
     end
 
     def centre_right
-      @centre_right ||= lower_right.translate(BoxDividers::Vector.new(0, height / 2.0))
+      @centre_right ||= lower_right.translate(Draught::Vector.new(0, height / 2.0))
     end
 
     def upper_centre
-      @upper_centre ||= upper_left.translate(BoxDividers::Vector.new(width/2.0, 0))
+      @upper_centre ||= upper_left.translate(Draught::Vector.new(width/2.0, 0))
     end
 
     def centre
-      @centre ||= lower_left.translate(BoxDividers::Vector.new(width/2.0, height/2.0))
+      @centre ||= lower_left.translate(Draught::Vector.new(width/2.0, height/2.0))
     end
 
     def corners
@@ -64,8 +64,8 @@ module BoxDividers
       end
 
       reference_point = send(reference_position_method)
-      translation = BoxDividers::Vector.translation_between(reference_point, point)
-      return self if translation == BoxDividers::Vector::NULL
+      translation = Draught::Vector.translation_between(reference_point, point)
+      return self if translation == Draught::Vector::NULL
       translate(translation)
     end
 

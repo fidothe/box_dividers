@@ -5,7 +5,7 @@ require 'draught/container'
 require 'draught/sheet_builder'
 require 'tmpdir'
 
-module BoxDividers
+module Draught
   RSpec.describe Renderer do
     let(:path) { PathBuilder.build { |p| p << Point.new(0,0); p << Point.new(50,50) } }
     let(:container) { Container.new(path, min_gap: 50) }

@@ -1,6 +1,6 @@
 require_relative './pointlike'
 
-module BoxDividers
+module Draught
   # An abstract representation of a curve in a pointlike fashion, in the way
   # a CubicBezier is pointlike
   class Curve

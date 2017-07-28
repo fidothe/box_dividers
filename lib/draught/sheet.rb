@@ -1,7 +1,7 @@
 require_relative 'boxlike'
 require_relative 'point'
 
-module BoxDividers
+module Draught
   class Sheet
     include Boxlike
 

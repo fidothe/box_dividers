@@ -1,7 +1,7 @@
 require 'draught/path_cleaner'
 require 'draught/point'
 
-module BoxDividers
+module Draught
   RSpec.describe PathCleaner do
     def p(x, y)
       Point.new(x, y)

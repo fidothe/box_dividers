@@ -4,7 +4,7 @@ require 'draught/spec_box'
 require 'draught/point'
 require 'draught/transformations'
 
-module BoxDividers
+module Draught
   RSpec.describe Container do
     let(:box) { SpecBox.new(lower_left: Point::ZERO, width: 200, height: 100) }
     subject { Container.new(box, min_gap: 50) }
@@ -21,7 +21,7 @@ module BoxDividers
 
     context "min_gap and transformation" do
       specify "we assume transformations are simply uniform and the min_gap gets scaled as if it were an x co-ord" do
-        transformation = BoxDividers::Transformations::Affine.new(
+        transformation = Draught::Transformations::Affine.new(
           Matrix[[2,0,0],[0,2,0],[0,0,1]]
         )
         transformed = subject.transform(transformation)

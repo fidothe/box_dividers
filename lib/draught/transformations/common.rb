@@ -1,4 +1,4 @@
-module BoxDividers
+module Draught
   module Transformations
     module Common
       def call(point)

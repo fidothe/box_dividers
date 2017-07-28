@@ -1,6 +1,6 @@
 require_relative './composition'
 
-module BoxDividers
+module Draught
   module Transformations
     class Composer
       def self.compose(*transforms)

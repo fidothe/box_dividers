@@ -2,7 +2,7 @@ require 'prawn'
 require_relative './curve'
 require_relative './cubic_bezier'
 
-module BoxDividers
+module Draught
   class Renderer
     class PdfContext
       include Prawn::View
@@ -30,11 +30,11 @@ module BoxDividers
 
       def draw_pointlike(pointlike)
         case pointlike
-        when BoxDividers::Curve
+        when Draught::Curve
           pointlike.as_cubic_beziers.each do |cubic_bezier|
             draw_pointlike(cubic_bezier)
           end
-        when BoxDividers::CubicBezier
+        when Draught::CubicBezier
           curve_to(point_tuple(pointlike.end_point), {
             bounds: [
               point_tuple(pointlike.control_point_1),

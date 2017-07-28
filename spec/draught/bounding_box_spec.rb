@@ -4,7 +4,7 @@ require 'draught/transformations'
 require 'draught/path'
 require 'draught/vector'
 
-module BoxDividers
+module Draught
   RSpec.describe BoundingBox do
     let(:input_path) { Path.new([Point.new(-1, -1), Point.new(3,3)]) }
     let(:zeroed_path) { Path.new([Point.new(0, 0), Point.new(4,4)]) }
@@ -54,7 +54,7 @@ module BoxDividers
       end
 
       it "can be transformed" do
-        transformation = BoxDividers::Transformations::Affine.new(
+        transformation = Draught::Transformations::Affine.new(
           Matrix[[2,0,0],[0,2,0],[0,0,1]]
         )
         expected = BoundingBox.new(Path.new([Point.new(-2,-2), Point.new(6,6)]))

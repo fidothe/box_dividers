@@ -23,8 +23,8 @@ module BoxDividers
     end
 
     def path
-      PathCleaner.simplify(
-        PathBuilder.connect(
+      Draught::PathCleaner.simplify(
+        Draught::PathBuilder.connect(
           left_end,
           *bottom_units,
           right_end,
@@ -79,40 +79,40 @@ module BoxDividers
 
     def untranslated_slot
       lip_width = [slot_tolerance, corner_radius].max
-      lip = Line.horizontal(lip_width)
-      slot = Corner.join_rounded({
+      lip = Draught::Line.horizontal(lip_width)
+      slot = Draught::Corner.join_rounded({
         radius: corner_radius,
         paths: [lip, slot_interior, lip]
       })
     end
 
     def slot_interior
-      PathBuilder.connect(
-        Line.vertical(slot_height),
-        Line.horizontal(slot_width),
-        Line.vertical(-slot_height)
+      Draught::PathBuilder.connect(
+        Draught::Line.vertical(slot_height),
+        Draught::Line.horizontal(slot_width),
+        Draught::Line.vertical(-slot_height)
       )
     end
 
     def abs_slot_centre_position
-      Line.horizontal((unit_width + (channel_width / 2.0))).lower_right
+      Draught::Line.horizontal((unit_width + (channel_width / 2.0))).lower_right
     end
 
     def tab
       @tab ||= begin
         tab_height = 1.5
         tab_width = 8
-        unit_line = Line.horizontal(unit_width)
-        left = Line.vertical(-tab_height)
-        centre = Line.horizontal(tab_width)
-        right = Line.vertical(tab_height)
-        tab = Corner.join_rounded(radius: corner_radius, paths: [left, centre, right])
+        unit_line = Draught::Line.horizontal(unit_width)
+        left = Draught::Line.vertical(-tab_height)
+        centre = Draught::Line.horizontal(tab_width)
+        right = Draught::Line.vertical(tab_height)
+        tab = Draught::Corner.join_rounded(radius: corner_radius, paths: [left, centre, right])
         tab.move_to(unit_line.centre, position: :upper_centre)
       end
     end
 
     def slot_width_path
-      Line.horizontal(channel_width)
+      Draught::Line.horizontal(channel_width)
     end
 
     def left_end
@@ -145,23 +145,23 @@ module BoxDividers
     end
 
     def full_left_end
-      Corner.join_rounded({
+      Draught::Corner.join_rounded({
         radius: corner_radius,
         paths: [
-          Line.horizontal(-end_width),
-          Line.vertical(-mm_height),
-          Line.horizontal(end_width)
+          Draught::Line.horizontal(-end_width),
+          Draught::Line.vertical(-mm_height),
+          Draught::Line.horizontal(end_width)
         ]
       })
     end
 
     def full_right_end
-      Corner.join_rounded({
+      Draught::Corner.join_rounded({
         radius: corner_radius,
         paths: [
-          Line.horizontal(end_width),
-          Line.vertical(mm_height),
-          Line.horizontal(-end_width)
+          Draught::Line.horizontal(end_width),
+          Draught::Line.vertical(mm_height),
+          Draught::Line.horizontal(-end_width)
         ]
       })
     end

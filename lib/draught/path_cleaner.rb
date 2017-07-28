@@ -1,6 +1,6 @@
 require_relative 'path'
 
-module BoxDividers
+module Draught
   class PathCleaner
     def self.dedupe(path)
       Path.new(new(path.points).dedupe)

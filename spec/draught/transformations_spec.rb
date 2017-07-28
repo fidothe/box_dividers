@@ -1,7 +1,7 @@
 require 'draught/transformations'
 require 'draught/point'
 
-module BoxDividers
+module Draught
   RSpec.describe Transformations do
     describe "units" do
       it "can convert mm to Postscript pts" do

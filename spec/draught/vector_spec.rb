@@ -2,7 +2,7 @@ require 'draught/vector'
 require 'draught/point'
 require 'draught/transformations/shared_examples'
 
-module BoxDividers
+module Draught
   RSpec.describe Vector do
     let(:radians) { Math.atan(4/3.0) }
     let(:degrees) { radians * (180.0 / Math::PI) }

@@ -1,7 +1,7 @@
 require_relative 'boxlike'
 require 'forwardable'
 
-module BoxDividers
+module Draught
   class Container
     extend Forwardable
     include Boxlike

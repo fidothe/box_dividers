@@ -3,7 +3,7 @@ require 'draught/pointlike_examples'
 require 'draught/cubic_bezier'
 require 'draught/vector'
 
-module BoxDividers
+module Draught
   RSpec.describe Point do
     subject { Point.new(1, 2) }
 

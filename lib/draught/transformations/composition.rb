@@ -1,6 +1,6 @@
 require_relative './common'
 
-module BoxDividers
+module Draught
   module Transformations
     class Composition
       include Transformations::Common

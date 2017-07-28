@@ -1,6 +1,6 @@
 require_relative './pointlike'
 
-module BoxDividers
+module Draught
   class CubicBezier
     include Pointlike
 

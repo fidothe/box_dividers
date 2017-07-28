@@ -3,7 +3,7 @@ require 'draught/transformations/affine'
 require 'draught/transformations/proclike'
 require 'draught/point'
 
-module BoxDividers::Transformations
+module Draught::Transformations
   RSpec.describe Composer do
     let(:t1) { Affine.new(Matrix[[-1, 0, 0],[0, 1, 0],[0, 0, 1]]) }
     let(:t2) { Affine.new(Matrix[[1, 0, 0],[0, -1, 0],[0, 0, 1]]) }

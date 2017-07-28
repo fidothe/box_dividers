@@ -3,7 +3,7 @@ require 'draught/arc_builder'
 require 'draught/line'
 require 'draught/path_builder'
 
-module BoxDividers
+module Draught
   RSpec.describe Corner do
     describe "joing two paths with a rounded corner returns a new containing the incoming path up to the point the arc starts, the arc, and the rest of the outgoing path" do
       context "the two paths meet at right-angles" do

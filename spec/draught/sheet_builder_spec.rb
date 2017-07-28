@@ -2,7 +2,7 @@ require 'draught/sheet_builder'
 require 'draught/spec_box'
 require 'prawn'
 
-module BoxDividers
+module Draught
   RSpec.describe SheetBuilder do
     let(:wide_box) { SpecBox.zeroed(width: 300, height: 100, min_gap: 50) }
     let(:args) { {boxes: [wide_box], max_width: 1000, max_height: 600, outer_gap: 5} }

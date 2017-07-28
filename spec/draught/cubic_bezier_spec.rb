@@ -1,7 +1,7 @@
 require 'draught/cubic_bezier'
 require 'draught/pointlike_examples'
 
-module BoxDividers
+module Draught
   RSpec.describe CubicBezier do
     let(:end_point) { Point.new(4,0) }
     let(:control_1) { Point.new(1,2) }

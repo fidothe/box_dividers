@@ -1,7 +1,7 @@
 require 'draught/point'
 require 'draught/boxlike'
 
-module BoxDividers
+module Draught
   class SpecBox
     include Boxlike
 

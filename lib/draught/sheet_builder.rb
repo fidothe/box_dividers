@@ -1,7 +1,7 @@
 require_relative 'sheet'
 require_relative 'point'
 
-module BoxDividers
+module Draught
   class SheetBuilder
     attr_reader :max_height, :max_width, :outer_gap, :boxes
 

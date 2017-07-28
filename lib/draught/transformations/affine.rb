@@ -1,7 +1,7 @@
 require_relative 'common'
 require_relative '../point'
 
-module BoxDividers
+module Draught
   module Transformations
     class Affine
       include Common

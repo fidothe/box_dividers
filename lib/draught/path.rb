@@ -2,7 +2,7 @@ require 'forwardable'
 require_relative './boxlike'
 require_relative './pathlike'
 
-module BoxDividers
+module Draught
   class Path
     include Boxlike
     include Pathlike

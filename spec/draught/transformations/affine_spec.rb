@@ -3,13 +3,13 @@ require 'draught/transformations/proclike'
 require 'draught/transformations/shared_examples'
 require 'draught/point'
 
-module BoxDividers::Transformations
+module Draught::Transformations
   RSpec.describe Affine do
     let(:transformation_matrix) {
       Matrix[[-1, 0, 0],[0, -1, 0],[0,0,1]]
     }
-    let(:input_point) { BoxDividers::Point.new(1,2) }
-    let(:expected_point) { BoxDividers::Point.new(-1,-2) }
+    let(:input_point) { Draught::Point.new(1,2) }
+    let(:expected_point) { Draught::Point.new(-1,-2) }
 
     subject { Affine.new(transformation_matrix) }
 
@@ -26,7 +26,7 @@ module BoxDividers::Transformations
       let(:t2) { Affine.new(Matrix[[1, 0, 0],[0, -1, 0],[0, 0, 1]]) }
 
       specify "produces a new Affine transform by matrix multiplication" do
-        expect(t2.coalesce(t1).call(input_point)).to eq(BoxDividers::Point.new(-1,-2))
+        expect(t2.coalesce(t1).call(input_point)).to eq(Draught::Point.new(-1,-2))
       end
 
       specify "the matrix of the new transform is the product of the inputs" do

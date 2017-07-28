@@ -1,7 +1,7 @@
 require 'draught/point'
 require 'draught/path_builder'
 
-module BoxDividers
+module Draught
   RSpec.describe PathBuilder do
     let(:p1) { Point.new(1,1) }
     let(:p2) { Point.new(2,2) }

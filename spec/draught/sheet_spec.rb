@@ -4,7 +4,7 @@ require 'draught/spec_box'
 require 'draught/point'
 require 'draught/vector'
 
-module BoxDividers
+module Draught
   RSpec.describe Sheet do
     let(:box) { SpecBox.new(lower_left: Point.new(50,50), width: 200, height: 100) }
     let(:containers) { [box] }

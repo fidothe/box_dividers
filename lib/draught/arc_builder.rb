@@ -5,7 +5,7 @@ require_relative './curve'
 require_relative './path'
 require_relative './transformations'
 
-module BoxDividers
+module Draught
   class ArcBuilder
     # Largest arc segment representable by a single Cubic Bézier is 90º
     # There's enough jitter in floating point maths that we round the result

@@ -1,4 +1,4 @@
-module BoxDividers
+module Draught
   module Pathlike
     def points
       raise NotImplementedError, "Pathlike objects must return an array of their points"

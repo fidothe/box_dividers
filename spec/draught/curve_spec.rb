@@ -3,7 +3,7 @@ require 'draught/point'
 require 'draught/cubic_bezier'
 require 'draught/pointlike_examples'
 
-module BoxDividers
+module Draught
   RSpec.describe Curve do
     let(:end_point) { Point.new(12,21) }
     let(:cubic_bezier) {

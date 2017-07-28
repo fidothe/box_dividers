@@ -1,6 +1,6 @@
 require_relative 'path'
 
-module BoxDividers
+module Draught
   class PathBuilder
     def self.build
       builder = new

@@ -6,19 +6,19 @@ RSpec.shared_examples "a basic rectangular box-like thing" do
     context "basic information" do
       context "corners" do
         it "reports the lower-left corner as a Point" do
-          expect(subject.lower_left).to be_a(BoxDividers::Point)
+          expect(subject.lower_left).to be_a(Draught::Point)
         end
 
         it "reports the lower-right corner as a Point" do
-          expect(subject.lower_right).to be_a(BoxDividers::Point)
+          expect(subject.lower_right).to be_a(Draught::Point)
         end
 
         it "reports the upper-right corner as a Point" do
-          expect(subject.upper_right).to be_a(BoxDividers::Point)
+          expect(subject.upper_right).to be_a(Draught::Point)
         end
 
         it "reports the upper-left corner as a Point" do
-          expect(subject.upper_left).to be_a(BoxDividers::Point)
+          expect(subject.upper_left).to be_a(Draught::Point)
         end
 
         it "returns all its corners in an array, anti-clockwise starting lower-left" do
@@ -41,7 +41,7 @@ RSpec.shared_examples "a basic rectangular box-like thing" do
 
   context "manipulation in space" do
     context "translation" do
-      let(:translation) { BoxDividers::Vector.new(5,5) }
+      let(:translation) { Draught::Vector.new(5,5) }
       let(:translated) { subject.translate(translation) }
 
       specify "moves the origin of the box correctly" do
@@ -60,7 +60,7 @@ RSpec.shared_examples "a basic rectangular box-like thing" do
 
     context "transformation" do
       let(:transformer) {
-        BoxDividers::Transformations::Affine.new(Matrix[[2,0,0],[0,2,0],[0,0,1]])
+        Draught::Transformations::Affine.new(Matrix[[2,0,0],[0,2,0],[0,0,1]])
       }
       let(:transformed) { subject.transform(transformer) }
 
@@ -79,7 +79,7 @@ RSpec.shared_examples "a basic rectangular box-like thing" do
     end
 
     context "relocation" do
-      let(:relocation_point) { subject.lower_left.translate(BoxDividers::Vector.new(-10, -10)) }
+      let(:relocation_point) { subject.lower_left.translate(Draught::Vector.new(-10, -10)) }
       let(:moved) { subject.move_to(relocation_point) }
 
       specify "moves the origin of the box correctly" do
@@ -129,7 +129,7 @@ RSpec.shared_examples "a basic rectangular box-like thing" do
 
     context "equality" do
       it "compares equal to a (0,0) translation of itself" do
-        expect(subject.translate(BoxDividers::Vector.new(0,0))).to eq(subject)
+        expect(subject.translate(Draught::Vector.new(0,0))).to eq(subject)
       end
     end
   end

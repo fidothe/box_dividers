@@ -2,7 +2,7 @@ require 'draught/boxlike_examples'
 require 'draught/boxlike'
 require 'draught/spec_box'
 
-module BoxDividers
+module Draught
   RSpec.describe Boxlike do
     subject { SpecBox.new({
       lower_left: Point.new(10,10),
