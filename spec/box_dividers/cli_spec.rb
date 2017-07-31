@@ -121,7 +121,7 @@ module BoxDividers
 
     context "the sheet" do
       specify "gets created correctly" do
-        sheet = double(Sheet)
+        sheet = double(Draught::Sheet)
 
         expect(Make).to receive(:sheet).with(subject.opts.to_h) { sheet }
 
@@ -160,14 +160,14 @@ module BoxDividers
     subject { CLI.new(args) }
 
     it "calls the renderer correctly with the generated dividers and the specified file" do
-      sheet = double(Sheet)
+      sheet = double(Draught::Sheet)
       allow(subject).to receive(:sheet) { sheet }
 
       Dir.mktmpdir do |dir|
         expected_path = File.realdirpath(filename, dir)
 
         Dir.chdir(dir) do
-          expect(Renderer).to receive(:render_to_file).with(sheet, expected_path)
+          expect(Draught::Renderer).to receive(:render_to_file).with(sheet, expected_path)
 
           subject.run
         end

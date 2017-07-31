@@ -13,7 +13,7 @@ module BoxDividers
       end
 
       it "produces a Path" do
-        expect(subject.path.translate(Vector::NULL).lower_left).to eq(subject.path.lower_left)
+        expect(subject.path.translate(Draught::Vector::NULL).lower_left).to eq(subject.path.lower_left)
       end
     end
 
@@ -25,7 +25,7 @@ module BoxDividers
       end
 
       it "produces a Path" do
-        expect(subject.path.translate(Vector::NULL).lower_left).to eq(subject.path.lower_left)
+        expect(subject.path.translate(Draught::Vector::NULL).lower_left).to eq(subject.path.lower_left)
       end
     end
   end

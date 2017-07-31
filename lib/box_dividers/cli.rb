@@ -1,6 +1,6 @@
 require 'optparse'
 require_relative './make'
-require_relative './renderer'
+require_relative '../draught/renderer'
 
 module BoxDividers
   class CLI
@@ -28,7 +28,7 @@ EOS
 
     def run
       begin
-        Renderer.render_to_file(sheet, output_path)
+        Draught::Renderer.render_to_file(sheet, output_path)
       rescue ShowCLIHelp
         puts option_parser
         exit 0

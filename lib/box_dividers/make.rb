@@ -1,8 +1,8 @@
 require_relative './bottom_divider_path'
 require_relative './top_divider_path'
-require_relative './container'
-require_relative './sheet_builder'
-require_relative './transformations'
+require_relative '../draught/container'
+require_relative '../draught/sheet_builder'
+require_relative '../draught/transformations'
 
 module BoxDividers
   class Make
@@ -21,7 +21,7 @@ module BoxDividers
     end
 
     def sheet
-      @sheet ||= raw_sheet.transform(Transformations.mm_to_pt)
+      @sheet ||= raw_sheet.transform(Draught::Transformations.mm_to_pt)
     end
 
     def raw_sheet
@@ -29,7 +29,7 @@ module BoxDividers
     end
 
     def sheet_builder
-      @sheet_builder ||= SheetBuilder.new({
+      @sheet_builder ||= Draught::SheetBuilder.new({
         boxes: containers,
         max_width: max_width,
         max_height: max_height,
@@ -38,7 +38,7 @@ module BoxDividers
     end
 
     def containers
-      @containers ||= divider_paths.map { |path| Container.new(path, min_gap: divider_gap) }
+      @containers ||= divider_paths.map { |path| Draught::Container.new(path, min_gap: divider_gap) }
     end
 
     def divider_paths
